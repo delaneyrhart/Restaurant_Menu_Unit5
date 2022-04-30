@@ -132,10 +132,11 @@ tipQ = validateString(tipQ);
       break;
       }
   else if(tipQ == "N" || tipQ == "n")
-    {cout << " :( okay " << endl;}
+    {cout << " :( okay " << endl;
+      break;}
   else
     {cout << "Invalid input";};
-  }while(tipQ != "N" || tipQ != "N");
+  }while(tipQ != "N" || tipQ != "n");
 
 double tax = .0625 * subtotal;
 double totalTax = tax + subtotal;
@@ -174,11 +175,27 @@ payment = validateString(payment);
   }
   }while(tender < totalDue);
   //handle reciept generation here
-cout << "Total before tax: " << subtotal << endl;
+
+    cout << "\nRECEIPT" << endl;
+    cout << "Total before tax: " << subtotal << endl;
     cout << "Tax: " << tax << endl;
-    cout << "Total after tax: " < totalTax;
+    cout << "Total after tax: " << totalTax << endl;
     cout << "Tip: " << tip << endl;
     cout << "Total Due: " << totalDue << endl;
+    cout << "Change: " << change << endl;
+  
+  ofstream outfile;
+  outfile.open("Receipt.txt");
+  outfile << fixed << setprecision(2);//set doubles to 2 decimal places
+    outfile << "\nRECEIPT" << endl;
+    outfile << "Total before tax: " << subtotal << endl;
+    outfile << "Tax: " << tax << endl;
+    outfile << "Total after tax: " << totalTax << endl;
+    outfile << "Tip: " << tip << endl;
+    outfile << "Total Due: " << totalDue << endl;
+    outfile << "Change: " << change << endl;
+  outfile.close();
+  system("Receipt.txt");
 
 }
 

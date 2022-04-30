@@ -10,10 +10,24 @@
 
 int main() 
 {
+  int loopMenu;
+  do{
+    cout << "Would you like to order? Type 1 to order or 2 to exit." << endl;
+     loopMenu = validateInt(loopMenu);
+    if(loopMenu == 1)
+    {
   vector<MenuItem> wholeMenu; 
   populateMenu(wholeMenu); //put some default values in the menu
   showMenu(wholeMenu); //print the current data of the menu on screen 
   acceptOrder(wholeMenu); 
-  
+      }
+    else if(loopMenu == 2)
+    {
+      cout << "Bye" << endl;
+      system("clear");
+    }
+    else
+    {cout << "Invalid input" << endl;}
+    }while(loopMenu != 2);
   return 0; 
 }

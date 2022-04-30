@@ -1,0 +1,8 @@
+
+RECEIPT
+Total before tax: 7.00
+Tax: 0.44
+Total after tax: 7.44
+Tip: 0.00
+Total Due: 7.44
+Change: 2.56
