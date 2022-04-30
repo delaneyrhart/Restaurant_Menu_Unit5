@@ -65,6 +65,9 @@ void acceptOrder(vector<MenuItem> &m)
   string tipQ;
   string payment;
   double tender = 0.0;
+  double tax = .0625 * subtotal;
+  double totalDue = subtotal + tip + tax;
+  double change;
 
   do
   {
@@ -134,7 +137,7 @@ tipQ = validateString(tipQ);
     {cout << "Invalid input";};
   }while(tipQ != "N" || tipQ != "N");
 
-double totalDue = subtotal + tip;
+
 cout << "Your final total will be: $" << totalDue << endl;
 
 
@@ -148,8 +151,17 @@ payment = validateString(payment);
   else if(payment == "CASH" || payment == "cash")
   {
     cout << "Please enter the cash amount below so that we can calculate your change: " << endl;
+    cout << "> $";
     tender = validateDouble(tender);
-      
+      if(tender >= totalDue)
+      {
+        change = tender - totalDue;
+        cout << "Your change is $" << change << endl;
+      }
+      else if(tender < totalDue)
+      {
+        cout << "You still owe $" << (totalDue - tender) << 
+      }
   }
 
 
