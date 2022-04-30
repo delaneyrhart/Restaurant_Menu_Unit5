@@ -65,8 +65,8 @@ void acceptOrder(vector<MenuItem> &m)
   string tipQ;
   string payment;
   double tender = 0.0;
-  double tax = .0625 * subtotal;
-  double totalDue = subtotal + tip + tax;
+  int c = 0;
+  
   double change;
 
   do
@@ -79,7 +79,7 @@ void acceptOrder(vector<MenuItem> &m)
       if(option == m[i].getAddLetter())
       {
         cout << "\nMenu Item " << m[i].getAddLetter() << " selected."; 
-       // m[i].setCount()--; //increment the count by 1
+       m[i].setCount(c++); //increment the count by 1
         cout << "\033[2J\033[1;1H"; //clear screen 
         cout << "\n1 UP on " << m[i].getName() << endl;
         subtotal += m[i].getItemCost(); //increment the subtotal by the cost of the item 
@@ -91,7 +91,7 @@ void acceptOrder(vector<MenuItem> &m)
         cout << "\nRemove Item " << m[i].getRemoveLetter() << " selected."; 
         if(m[i].getCount() > 0) //subtract if and only if the count is > 0
         {
-         // m[i].getCount()--; //decrement the count by 1
+         m[i].setCount(c--); //decrement the count by 1
           cout << "\033[2J\033[1;1H"; //clear screen 
           cout << "\n1 DOWN on " << m[i].getName() << endl;
           subtotal -= m[i].getItemCost(); //decrement the subtotal by the cost of the item
@@ -137,16 +137,20 @@ tipQ = validateString(tipQ);
     {cout << "Invalid input";};
   }while(tipQ != "N" || tipQ != "N");
 
-
+double tax = .0625 * subtotal;
+double totalTax = tax + subtotal;
+double totalDue = subtotal + tip + tax;
+  
 cout << "Your final total will be: $" << totalDue << endl;
 
-
+do{
 cout << "Would you like to pay with cash or credit? Type CREDIT for credit or CASH for cash: " << endl;
 payment = validateString(payment);
   if(payment == "CREDIT" || payment == "credit")
   {
     cout << "Please follow the instructions on the payment terminal..." << endl;
     cout << "Payment processed" << endl;
+    break;
   }
   else if(payment == "CASH" || payment == "cash")
   {
@@ -157,16 +161,26 @@ payment = validateString(payment);
       {
         change = tender - totalDue;
         cout << "Your change is $" << change << endl;
+        break;
       }
       else if(tender < totalDue)
       {
-        cout << "You still owe $" << (totalDue - tender) << 
+        cout << "You still owe $" << (totalDue - tender) << endl; //figure out some way to loop back around with only the owed amount...
+      }
+      else
+      {
+        cout << "Invalid input " << endl;
       }
   }
-
-
+  }while(tender < totalDue);
   //handle reciept generation here
-
+cout << "Total before tax: " << subtotal << endl;
+    cout << "Tax: " << tax << endl;
+    cout << "Total after tax: " < totalTax;
+    cout << "Tip: " << tip << endl;
+    cout << "Total Due: " << totalDue << endl;
 
 }
+
+ 
 #endif
