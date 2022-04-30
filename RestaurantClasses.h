@@ -1,5 +1,5 @@
-#include<string>
-using namespace std;
+#ifndef RESTAURANT_CLASSES_H
+#define RESTAURANT_CLASSES_H
 
 class MenuItem
 {
@@ -29,6 +29,7 @@ class MenuItem
     }
 };
 
+/*
 class Receipt
 {
   private:
@@ -53,3 +54,5 @@ class Receipt
       }
     
 };
+*/
+#endif

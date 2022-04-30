@@ -2,14 +2,9 @@
 //Delaney Hart - COSC 1437
 //4/29/2022
 
-#include <iostream>
-#include<string>
-#include<vector>
-#include<iomanip>
-#include "InputValidationExtended.h"
-#include "RestaurantClasses.h"
-#include "RestaurantFunctions.h"
-using namespace std; 
+
+#include "includes.h"
+
 
 //I moved the classes and functions because I was getting confused with so many lines
 

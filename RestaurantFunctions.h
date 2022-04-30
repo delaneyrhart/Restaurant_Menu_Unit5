@@ -1,6 +1,6 @@
-#include<string>
-#include "RestaurantClasses.h"
-using namespace std;
+#ifndef RESTAURANT_FUNCTIONS_H
+#define RESTAURANT_FUNCTIONS_H
+
 //function definitions
 void populateMenu(vector<MenuItem> &entireMenu)
 {
@@ -61,6 +61,10 @@ void acceptOrder(vector<MenuItem> &m)
 {
   char option = '\0';// the user-selected menu item
   double subtotal = 0.0; 
+  double tip = 0.0;
+  string tipQ;
+  string payment;
+  double tender = 0.0;
 
   do
   {
@@ -113,27 +117,44 @@ void acceptOrder(vector<MenuItem> &m)
   }while(option != 'x' && option != 'X'); 
   cout << "\nThank you for placing your order." << endl; 
   //handle the tip process here
-double tip = 0.0;
-string tipQ;
-cout << "Would you like to leave a tip?" << endl;
-cin << tipQ;
-  if(tipQ == "Y" || "y")
+
+do{
+cout << "\nWould you like to leave a tip? Type Y for YES or N for NO: " << endl;
+tipQ = validateString(tipQ);  
+  if(tipQ == "Y" || tipQ == "y")
     {cout << "Suggested gratuity (20%): " << (.20 * subtotal) << endl;
-    cin >> tip;}
-  else if(tipQ == "N" || "n")
-    {cout << " :( " << endl;}
+    cout << "Please enter the tip amount below: " << endl;
+    cout << "> $";
+    tip = validateDouble(tip);
+      break;
+      }
+  else if(tipQ == "N" || tipQ == "n")
+    {cout << " :( okay " << endl;}
   else
-    {cout << "Invalid input"};
+    {cout << "Invalid input";};
+  }while(tipQ != "N" || tipQ != "N");
 
-  
 double totalDue = subtotal + tip;
-cout << "Your final total will be: " << totalDue << endl;
-  
-cout << "Do you want to pay with cash or credit? " << endl;
+cout << "Your final total will be: $" << totalDue << endl;
 
+
+cout << "Would you like to pay with cash or credit? Type CREDIT for credit or CASH for cash: " << endl;
+payment = validateString(payment);
+  if(payment == "CREDIT" || payment == "credit")
+  {
+    cout << "Please follow the instructions on the payment terminal..." << endl;
+    cout << "Payment processed" << endl;
+  }
+  else if(payment == "CASH" || payment == "cash")
+  {
+    cout << "Please enter the cash amount below so that we can calculate your change: " << endl;
+    tender = validateDouble(tender);
+      
+  }
 
 
   //handle reciept generation here
 
 
 }
+#endif
