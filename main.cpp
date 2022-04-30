@@ -7,14 +7,28 @@
 using namespace std; 
 
 /////////////////////////////////MENU ITEMS
-struct MenuItem
+class MenuItem
 {
-  string name;
-  double itemCost; 
-  string desc; 
-  char addLetter; 
-  char removeLetter;
-  int count; 
+  private:
+    string name;
+    double itemCost; 
+    string desc; 
+    char addLetter; 
+    char removeLetter;
+    int count;
+  public:
+    void setName(string n) { name = n;}
+    void setItemCost(double i) { itemCost = i; }
+    void setDesc(string d) { desc = d; }
+    void setAddLetter(char l) { addLetter = l; }
+    void setRemoveLetter(char r) { removeLetter = r; }
+    void setCount(int c) { count = c; }
+    string getName() {return name;}
+    double getItemCost() { return itemCost; }
+    string getDesc() { return desc; }
+    char getAddLetter() { return addLetter; }
+    char getRemoveLetter() { return removeLetter; }
+    int getCount() { return count; }
 };
 
 //function definitions
@@ -45,9 +59,9 @@ void populateMenu(vector<MenuItem> &entireMenu)
   for(int i = 0; i < numItems; i++)
   {
     //add each item to the default list efficiently 
-    entireMenu[i].name = defaultMenuNames[i]; 
-    entireMenu[i].addLetter = defaultAddLetters[i]; 
-    entireMenu[i].removeLetter = defaultRemoveLetters[i]; 
+    entireMenu[i].getName() = defaultMenuNames[i]; 
+    entireMenu[i].getAddLetter() = defaultAddLetters[i]; 
+    entireMenu[i].getRemoveLetter() = defaultRemoveLetters[i]; 
     entireMenu[i].itemCost = (3.00 + i); //set a random starter cost for each item
     entireMenu[i].count = 0; //initialze all counts to 0
     entireMenu[i].desc = "delicious"; //set all default desc to "delicous"
