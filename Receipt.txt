@@ -1,8 +1,15 @@
 
 RECEIPT
+ Green Tea    $3.00      0
+   Burrito    $4.00      1
+    Hotdog    $2.00      0
+     Chips    $1.00      0
+Dr. Pepper    $3.00      0
+     Donut    $2.00      0
+    Coffee    $3.50      0
 Total before tax: 7.00
 Tax: 0.44
 Total after tax: 7.44
-Tip: 0.00
-Total Due: 7.44
-Change: 2.56
+Tip: 1.40
+Total Due: 8.84
+Change: 1.16

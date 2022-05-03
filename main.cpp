@@ -1,7 +1,10 @@
-//A  Restaurant Project Struct style Dr_T Dr. Tyson McMillan 10-2-2019
-//Delaney Hart - COSC 1437
-//4/29/2022
-
+/*A  Delaney Hart 
+COSC 1437 Tarrant County College
+Dr. McMillan
+4/29/2022
+A program meant to simulate ordering at a restaurant.
+This program was practice for classes and vectors.
+*/
 
 #include "includes.h"
 
@@ -20,6 +23,7 @@ int main()
   populateMenu(wholeMenu); //put some default values in the menu
   showMenu(wholeMenu); //print the current data of the menu on screen 
   acceptOrder(wholeMenu); 
+
       }
     else if(loopMenu == 2)
     {

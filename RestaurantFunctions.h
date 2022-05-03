@@ -1,6 +1,8 @@
 #ifndef RESTAURANT_FUNCTIONS_H
 #define RESTAURANT_FUNCTIONS_H
 
+void printReceipt(vector<MenuItem> &m, double, double, double, double, double, double);
+
 //function definitions
 void populateMenu(vector<MenuItem> &entireMenu)
 {
@@ -184,10 +186,14 @@ payment = validateString(payment);
     cout << "Total Due: " << totalDue << endl;
     cout << "Change: " << change << endl;
   
-  ofstream outfile;
+ ofstream outfile;
   outfile.open("Receipt.txt");
   outfile << fixed << setprecision(2);//set doubles to 2 decimal places
     outfile << "\nRECEIPT" << endl;
+  for(int i = 0; i < m.size(); i++)
+  {
+    outfile << setw(10) << m[i].getName() 
+    << setw(5) << "$" << m[i].getItemCost() << setw(7) << m[i].getCount() <<endl; }
     outfile << "Total before tax: " << subtotal << endl;
     outfile << "Tax: " << tax << endl;
     outfile << "Total after tax: " << totalTax << endl;
@@ -196,8 +202,28 @@ payment = validateString(payment);
     outfile << "Change: " << change << endl;
   outfile.close();
   system("Receipt.txt");
-
+  
 }
-
+/*
+void printReceipt(vector<MenuItem> &m, double subtotal, double tax, double totalTax, double tip, double totalDue, double change)
+{
+   ofstream outfile;
+  outfile.open("Receipt.txt");
+  outfile << fixed << setprecision(2);//set doubles to 2 decimal places
+    outfile << "\nRECEIPT" << endl;
+  for(int i = 0; i < m.size(); i++)
+  {
+    outfile << setw(10) << m[i].getName() 
+    << setw(5) << "$" << m[i].getItemCost() << setw(7) << m[i].getCount() <<endl; }
+    outfile << "Total before tax: " << subtotal << endl;
+    outfile << "Tax: " << tax << endl;
+    outfile << "Total after tax: " << totalTax << endl;
+    outfile << "Tip: " << tip << endl;
+    outfile << "Total Due: " << totalDue << endl;
+    outfile << "Change: " << change << endl;
+  outfile.close();
+  system("Receipt.txt");
+}
+*/
  
 #endif
